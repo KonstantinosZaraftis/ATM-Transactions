@@ -13,7 +13,31 @@ namespace OpenSourceProjects
         public int CardPin { get; set; }
         public DateTime ExpirationDate { get; set; }
 
-         
+        public  string ReadPasswordLine()
+        {
+            string pass = "";
+            ConsoleKeyInfo key;
+            do
+            {
+                key = Console.ReadKey(true);
+                if (key.Key != ConsoleKey.Enter)
+                {
+                    if (!(key.KeyChar < ' '))
+                    {
+                        pass += key.KeyChar;
+                        Console.Write("*");
+                    }
+                    else if (key.Key == ConsoleKey.Backspace && pass.Length > 0)
+                    {
+                        Console.Write(Convert.ToChar(ConsoleKey.Backspace));
+                        pass = pass.Remove(pass.Length - 1);
+                        Console.Write(" ");
+                        Console.Write(Convert.ToChar(ConsoleKey.Backspace));
+                    }
+                }
+            } while (key.Key != ConsoleKey.Enter);
+            return pass;
+        }
         public bool isValid(long cardNumber)
         {
             return (getSize(cardNumber) >= 13 &&

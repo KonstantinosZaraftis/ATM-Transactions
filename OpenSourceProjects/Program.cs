@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -16,10 +17,11 @@ namespace OpenSourceProjects
         Console.WriteLine("Please insert your ATM card.\n");
 
 
-           
             Console.WriteLine("Please Enter your pin number\n");
+
             int pinNumber = Convert.ToInt32(Console.ReadLine());
             string spinNumber = Convert.ToString(pinNumber);
+
             List<BankAccount> bankAccountsList = new List<BankAccount>()
             {
                 new BankAccount(){BankAccountId=1,AccountNumber=5707044557788,FullName="Konstantinos Zaraftis",AccountBalance=4000,Card=new Card(){CardId=1,CardNumber=379354508162306L,CardPin=2206,ExpirationDate=new DateTime(2020,1,1)}}
@@ -63,11 +65,30 @@ namespace OpenSourceProjects
                     {
                         Enum.Menu atmmenu = Enum.Menu.PlaceDeposit;
                         Console.WriteLine(atmmenu);
+                        Console.WriteLine("Please enter the amount you want to deposit\n");
+                        int deposit = Convert.ToInt32(Console.ReadLine());
+                        int amount = 0;
+                        amount = amount + deposit;
+                        int newAccountBalance= (int)bankAccount.AccountBalance + amount;
+                        Console.WriteLine("Your account balance now is " + newAccountBalance);
                     }
                     if (option == 3)
                     {
                         Enum.Menu atmmenu = Enum.Menu.MakeWithdrawal;
                         Console.WriteLine(atmmenu);
+                        Console.WriteLine("Please enter the amount you want to withdraw");
+                        int withdraw = Convert.ToInt32(Console.ReadLine());
+                        if (withdraw > bankAccount.AccountBalance)
+                        {
+                            Console.WriteLine("The amount you ask for is not avaliable please try again");
+                        }
+                        else
+                        {
+                            int _accountBalance = (int)bankAccount.AccountBalance - withdraw;
+                            Console.WriteLine("Your acountBalance now is " + _accountBalance);
+                        }
+                       
+
                     }
 
                     if (option == 4)
@@ -123,7 +144,6 @@ namespace OpenSourceProjects
             Console.ReadKey();
         }
 
-      
-      
-   }
+        
+    }
 }
