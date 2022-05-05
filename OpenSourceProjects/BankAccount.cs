@@ -15,10 +15,10 @@ namespace OpenSourceProjects
         public decimal AccountBalance = 0;
         public Card Card { get; set; }
 
+        public BankAccountList BankAccountList { get; set; }
 
 
 
-         
 
 
 
