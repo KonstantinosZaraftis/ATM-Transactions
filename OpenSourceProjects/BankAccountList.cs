@@ -14,21 +14,45 @@ namespace OpenSourceProjects
         public DisplayMenu DisplayMenu { get; set; }
 
         public List<BankAccount> bankAccountList { get; set; }
-        
+        public BankAccount BankAccount { get; set; }
 
 
         public void CheckBalance(decimal accountBalance)
         {
             Console.WriteLine("Your AccountBalance is "+ accountBalance);
         }
-        public void MakeDeposit()
+        public void MakeDeposit(decimal accountBalance)
         {
             Console.WriteLine("Please enter the amount you want to deposit\n");
             int deposit = Convert.ToInt32(Console.ReadLine());
             int amount = 0;
             amount = amount + deposit;
+            int newAccountBalance = (int)accountBalance + deposit;
+            Console.WriteLine("Your new AccountBalance is"+ "" + newAccountBalance);
         }
+        
+         public void WithDraw(decimal accountBalance)
+         {
+            Console.WriteLine("Please type the ammount you want to withdraw");
+            int withdraw = Convert.ToInt32(Console.ReadLine());
+            if (withdraw > accountBalance)
+            {
+                Console.WriteLine("Your withdraw amount is not availiable, please try again");
+            }
+            else
+            {
+                if (withdraw < accountBalance)
+                {
+                     int newAccountBalance = (int)accountBalance - withdraw;
+                    Console.WriteLine("Your new AccountBalance is" +  " " + newAccountBalance);
+                }
 
+            }
+
+         }
+
+
+         
         public void DataBaseList(int pinNumber)
         {
             bankAccountList = new List<BankAccount>()
@@ -103,31 +127,22 @@ namespace OpenSourceProjects
                         Enum.Menu atmmenu = Enum.Menu.CheckBalance;
                         CheckBalance(bankAccount.AccountBalance);
 
-
                     }
 
                     if (option == 2)
                     {
                         Enum.Menu atmmenu = Enum.Menu.PlaceDeposit;
                         Console.WriteLine(atmmenu);
-
-
+                        MakeDeposit(bankAccount.AccountBalance);
+                       
                     }
                     if (option == 3)
                     {
                         Enum.Menu atmmenu = Enum.Menu.MakeWithdrawal;
                         Console.WriteLine(atmmenu);
-                        Console.WriteLine("Please enter the amount you want to withdraw");
-                        //int withdraw = Convert.ToInt32(Console.ReadLine());
-                        //if (withdraw > bankAccount.AccountBalance)
-                        //{
-                        //    Console.WriteLine("The amount you ask for is not avaliable please try again");
-                        //}
-                        //else
-                        //{
-                        //    //    int _accountBalance = (int)bankAccount.AccountBalance - withdraw;
-                        //    //    Console.WriteLine("Your acountBalance now is " + _accountBalance);
-                        //}
+                        WithDraw(bankAccount.AccountBalance);
+
+
 
 
                     }

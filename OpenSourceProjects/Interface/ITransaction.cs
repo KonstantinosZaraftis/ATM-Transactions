@@ -2,7 +2,9 @@
 {
     public interface ITransaction
     {
+        
         void CheckBalance(decimal accountBalance);
-        void MakeDeposit();
+        void MakeDeposit(decimal accountBalance);
+        void WithDraw(decimal accountBalance);
     }
  }
