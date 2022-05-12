@@ -48,6 +48,7 @@
     <Compile Include="Card.cs" />
     <Compile Include="DisplayMenu.cs" />
     <Compile Include="Enum\Menu.cs" />
+    <Compile Include="Interface\ITransaction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

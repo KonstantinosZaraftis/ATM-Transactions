@@ -12,10 +12,10 @@ namespace OpenSourceProjects
         public long AccountNumber { get; set; }
         public string FullName { get; set; }
 
-        public decimal AccountBalance = 0;
+        public decimal AccountBalance { get; set; }
         public Card Card { get; set; }
 
-        public BankAccountList BankAccountList { get; set; }
+        public DisplayMenu DisplayMenu { get; set; }
 
 
 

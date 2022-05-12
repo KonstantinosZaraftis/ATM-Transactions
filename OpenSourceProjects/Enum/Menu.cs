@@ -9,6 +9,7 @@ namespace OpenSourceProjects.Enum
 {
     public enum Menu
     {
+         
         [Description("Check balance")]
         CheckBalance = 1,
 
